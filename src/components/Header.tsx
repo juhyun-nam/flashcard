@@ -1,10 +1,13 @@
 import React from 'react';
-import Navbar from 'react-bootstrap/Navbar';
+import AppBar from '@material-ui/core/AppBar';
+import Typography from '@material-ui/core/Typography';
 
 export default function Header() {
   return (
-    <Navbar fixed="top" bg="primary">
-      <Navbar.Brand> FlashCard </Navbar.Brand>
-    </Navbar>
+    <AppBar position="static">
+      <Typography>
+        FlashCard
+      </Typography>
+    </AppBar>
   );
 }

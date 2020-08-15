@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Home({ setTestType }) {
+function Home() {
   return (
     <h1>
       home
