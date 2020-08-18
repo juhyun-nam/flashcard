@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { Dispatch } from 'react';
 
-function Home() {
+import { TestType } from '../types/test';
+
+type HomeProps = {
+  setTestType: Dispatch<TestType>
+};
+
+function Home({ setTestType }: HomeProps) {
   return (
     <h1>
       home
