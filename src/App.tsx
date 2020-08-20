@@ -13,7 +13,7 @@ function App() {
     <Home setTestType={setTestType} />
   );
   const renderTest = () => (
-    <Test />
+    <Test testType={testType} />
   );
   return (
     <Container>
