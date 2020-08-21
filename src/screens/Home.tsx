@@ -1,43 +1,45 @@
 import React, { Dispatch } from 'react';
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
 
-import { TestType } from '../TestType';
+import { StudyMethod } from '../StudyMethod';
+import StudyMethodInput from '../components/StudyMethodInput';
+import TestSourceInput from '../components/TestSourceInput';
 
 type HomeProps = {
-  setTestType: Dispatch<TestType>
+  studyMethod: StudyMethod,
+  setStudyMethod: Dispatch<StudyMethod>,
+  testSource: any,
+  setTestSource: Dispatch<any>,
+  setScreen: Dispatch<string>
 };
 
-function Home({ setTestType }: HomeProps) {
+export default function Home({ studyMethod, setStudyMethod, testSource, setTestSource, setScreen }: HomeProps) {
   return (
-    <Paper elevation={3}>
-      <Box p={1}>
-        <Box m={1}>
-          <Typography>
-            시험 종류 선택
-          </Typography>
-        </Box>
-        <Box>
-          <ButtonGroup
-            fullWidth={true}
-            size="large"
-            orientation="vertical"
-            color="primary"
-          >
-            <Button onClick={() => setTestType(TestType.SHUFFLE)}>
-              Shuffle
-          </Button>
-            <Button onClick={() => setTestType(TestType.RANDOM)}>
-              Random
-          </Button>
-          </ButtonGroup>
-        </Box>
-      </Box>
-    </Paper>
+    <Box>
+    <Grid container spacing={2}>
+      <Grid item xs>
+        <Paper elevation={3}>
+          <Box p={1}>
+            <StudyMethodInput studyMethod={studyMethod} setStudyMethod={setStudyMethod} />
+          </Box>
+        </Paper>
+      </Grid>
+      <Grid item xs>
+        <Paper elevation={3}>
+          <Box p={1}>
+            <TestSourceInput testSource={testSource} setTestSource={setTestSource} />
+          </Box>
+        </Paper>
+      </Grid>
+    </Grid>
+    <Box my={2}>
+      <Button color="secondary" fullWidth={true} variant="contained" onClick={() => { setScreen('test') }}>
+        Go Test
+      </Button>
+    </Box>
+    </Box>
   );
 }
-
-export default Home;

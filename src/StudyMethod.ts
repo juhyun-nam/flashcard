@@ -1,4 +1,4 @@
-export enum TestType {
+export enum StudyMethod {
   NONE,
   SHUFFLE,
   RANDOM

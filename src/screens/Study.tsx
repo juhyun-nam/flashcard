@@ -5,17 +5,16 @@ import IconButton from '@material-ui/core/IconButton';
 import PrevIcon from '@material-ui/icons/ArrowBackIos';
 import NextIcon from '@material-ui/icons/ArrowForwardIos';
 
-import { TestType } from '../TestType';
-// import { Card } from '../Card';
+import { StudyMethod } from '../StudyMethod';
 import FlashCard from '../components/FlashCard';
 import Cards from '../data/cards.json';
 
 type TestProps = {
-  testType: TestType
+  studyMethod: StudyMethod
 };
 
-function Test({ testType }: TestProps) {
-  if (testType === TestType.NONE) {
+export default function Study({ studyMethod }: TestProps) {
+  if (studyMethod === StudyMethod.NONE) {
     throw new Error('Something is Wrong');
   }
   const iconStyle= {
@@ -24,15 +23,15 @@ function Test({ testType }: TestProps) {
   };
   return (
     <Grid container spacing={2}>
-      <Grid item xs={4}>
+      <Grid item xs={3}>
         <IconButton style={iconStyle} onClick={() => { window.console.log('prev') }}>
           <PrevIcon />
         </IconButton>
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={6}>
         <FlashCard front={Cards.contents[0].front} back={Cards.contents[0].back} />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={3}>
         <IconButton style={iconStyle} onClick={() => { window.console.log('next') }}>
           <NextIcon />
         </IconButton>
@@ -40,5 +39,3 @@ function Test({ testType }: TestProps) {
     </Grid>
   );
 }
-
-export default Test;
