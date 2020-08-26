@@ -1,18 +1,10 @@
-import { StudyMethod } from './StudyMethod';
+import { Card } from './Card';
 
-export type Action = { type: 'METHOD'; method: StudyMethod } | { type: 'SOURCE'; source: {} };
+export interface Action {
+  type: 'CARDS';
+  cards: Array<Card>;
+}
 
-const methodAction = (method: StudyMethod): Action => ({
-  type: 'METHOD',
-  method: method
-});
-
-const sourceAction = (source: any): Action => ({
-  type: 'SOURCE',
-  source: source
-});
-
-export const Actions = {
-  methodAction,
-  sourceAction
-};
+export function CardsAction(cards: Array<Card>): Action {
+  return { type: 'CARDS', cards };
+}

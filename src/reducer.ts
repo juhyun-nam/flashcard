@@ -1,20 +1,19 @@
-import { Reducer } from 'redux';
 import { Action } from './actions';
-import { StudyMethod } from './StudyMethod';
+import { Card } from './Card';
 
-export type AppState = {
-  method: StudyMethod;
-  source: any;
+export interface AppState {
+  cards: Array<Card>;
+}
+
+const defaultState: AppState = {
+  cards: [],
 };
 
-const reducer: Reducer<AppState | undefined> = (state, action): AppState | undefined => {
+export default function reducer(state = defaultState, action: Action): AppState {
   switch (action.type) {
-    case 'METHOD':
-      return { ...state, method: action.method } as AppState;
-    case 'SOURCE':
-      return { ...state, source: action.source } as AppState;
+    case 'CARDS':
+      return { ...state, cards: action.cards } as AppState;
     default:
       return state;
   }
 }
-export default reducer;

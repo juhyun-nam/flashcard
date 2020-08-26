@@ -16,7 +16,7 @@ function App() {
   );
   return (
     <Container>
-        <Header />
+      <Header />
       <Box my={4}>
         {screen === 'home' ? renderHome() : renderStudy()}
       </Box>

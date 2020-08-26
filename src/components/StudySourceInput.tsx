@@ -1,23 +1,38 @@
 import React, { Dispatch } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import CheckBox from '@material-ui/core/Checkbox';
 
-import { Actions } from '../actions';
-import { AppState }  from '../reducer';
+type Source = {
+  label: string,
+  checked: boolean,
+};
+type StudySourceInputProp = {
+  sources: Array<Source>,
+  setSources: Dispatch<Array<Source>>
+};
 
-export default function StudySourceInput() {
-  const dispatch = useDispatch();
-  const currentSource = useSelector((state: AppState) => state.source);
+export default function StudySourceInput({ sources, setSources }: StudySourceInputProp) {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(Actions.sourceAction({ ...currentSource, [event.target.name]: event.target.checked }));
+    const newSources = sources.map((elem) => ({
+      ...elem, checked: (elem.label === event.target.name ? event.target.checked : elem.checked),
+    }));
+    setSources(newSources);
   };
+
   return (
     <FormControl component="fieldset">
       <FormLabel component="legend">Study Source</FormLabel>
-      <FormControlLabel control={<CheckBox checked={currentSource.pattern} onChange={handleChange} />} label="Patterns" />
+      {
+        sources.map((elem) => (
+          <FormControlLabel
+            key={elem.label}
+            label={elem.label}
+            control={<CheckBox checked={elem.checked} onChange={handleChange} name={elem.label} />}
+          />
+        ))
+      }
     </FormControl>
   );
 }
