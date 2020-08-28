@@ -1,15 +1,13 @@
 import React, { Dispatch, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 
+import StudyMethod from '../types/StudyMethod';
 import StudyMethodInput from '../components/StudyMethodInput';
 import StudySourceInput from '../components/StudySourceInput';
-import StudyMethod from '../StudyMethod';
-import { CardsAction } from '../actions';
-import { Card } from '../Card';
+import cardContainer from '../CardContainer';
 import cards from '../data/cards.json';
 
 type HomeProps = {
@@ -20,16 +18,15 @@ export default function Home({ setScreen }: HomeProps) {
   const [method, setMethod] = useState(StudyMethod.SHUFFLE);
   const labels = cards.data.map((elem) => ({ label: elem.subject, checked: true }));
   const [sources, setSources] = useState(labels);
-  const dispatch = useDispatch();
 
   const handleStartButton = () => {
-    let cardList = [] as Array<Card>;
-    sources.forEach((elem, index) => {
+    const cardList = [] as Array<string>;
+    sources.forEach((elem) => {
       if (elem.checked) {
-        cardList = cardList.concat(cards.data[index].contents);
+        cardList.push(elem.label);
       }
     });
-    dispatch(CardsAction(cardList));
+    cardContainer.apply(cardList, method);
     setScreen('study');
   };
   return (

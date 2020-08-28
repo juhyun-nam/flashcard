@@ -13,7 +13,7 @@ export default function FlashCard({ front, back }: FlashCardProp) {
   const [flipped, setFlip] = useState(false);
   const cardStyle = {
     width: '100%',
-    height: '25vh',
+    height: '50vh',
   };
   const renderCard = (key: string, content: string, onClick: () => void) => (
     <Card style={cardStyle} elevation={24} key={key} onClick={onClick}>

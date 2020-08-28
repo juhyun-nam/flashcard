@@ -1,7 +1,7 @@
 enum StudyMethod {
   NONE,
   SHUFFLE,
-  RANDOM
+  SHUFFLE_REVERSE
 }
 
 export default StudyMethod;

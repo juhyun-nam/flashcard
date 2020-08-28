@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 // import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import PrevIcon from '@material-ui/icons/ArrowBackIos';
 import NextIcon from '@material-ui/icons/ArrowForwardIos';
 
-import { AppState } from '../reducer';
+import cardContainer from '../CardContainer';
 import FlashCard from '../components/FlashCard';
 
 export default function Study() {
-  const cards = useSelector((state: AppState) => state.cards);
-  const [cardIndex, setCardIndex] = useState(0);
-  const prev = () => { if (cardIndex !== 0) { setCardIndex(cardIndex - 1); } };
-  const next = () => { if (cardIndex !== cards.length) { setCardIndex(cardIndex + 1); } };
+  const [content, setContent] = useState(cardContainer.getContent());
+  const prev = () => {
+    cardContainer.prev();
+    setContent(cardContainer.getContent());
+  };
+  const next = () => {
+    cardContainer.next();
+    setContent(cardContainer.getContent());
+  };
   const iconStyle = {
     width: '100%',
     height: '100%',
@@ -21,15 +25,15 @@ export default function Study() {
   return (
     <Grid container spacing={2}>
       <Grid item xs={3}>
-        <IconButton style={iconStyle} onClick={next}>
+        <IconButton disabled={!cardContainer.hasPrev()} style={iconStyle} onClick={prev}>
           <PrevIcon />
         </IconButton>
       </Grid>
       <Grid item xs={6}>
-        <FlashCard front={cards[cardIndex].front} back={cards[cardIndex].back} />
+        <FlashCard front={content.front} back={content.back} />
       </Grid>
       <Grid item xs={3}>
-        <IconButton style={iconStyle} onClick={prev}>
+        <IconButton disabled={!cardContainer.hasNext()} style={iconStyle} onClick={next}>
           <NextIcon />
         </IconButton>
       </Grid>

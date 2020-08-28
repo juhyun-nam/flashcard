@@ -5,7 +5,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
-import StudyMethod from '../StudyMethod';
+import StudyMethod from '../types/StudyMethod';
 
 type StudyMethodInputProp = {
   method: StudyMethod,
@@ -21,9 +21,22 @@ export default function StudyMethodInput({ method, setMethod }: StudyMethodInput
   return (
     <FormControl component="fieldset">
       <FormLabel component="legend">Study Type</FormLabel>
-      <RadioGroup aria-label="gender" name="gender1" value={StudyMethod[method]} onChange={handleChange}>
-        <FormControlLabel value={StudyMethod[StudyMethod.SHUFFLE]} control={<Radio />} label="Shuffle" />
-        <FormControlLabel value={StudyMethod[StudyMethod.RANDOM]} control={<Radio />} label="Random" />
+      <RadioGroup
+        aria-label="gender"
+        name="gender1"
+        value={StudyMethod[method]}
+        onChange={handleChange}
+      >
+        <FormControlLabel
+          value={StudyMethod[StudyMethod.SHUFFLE]}
+          control={<Radio />}
+          label="Shuffle"
+        />
+        <FormControlLabel
+          value={StudyMethod[StudyMethod.SHUFFLE_REVERSE]}
+          control={<Radio />}
+          label="Shuffle Reverse"
+        />
       </RadioGroup>
     </FormControl>
   );
