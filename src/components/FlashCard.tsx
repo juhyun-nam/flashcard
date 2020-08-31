@@ -10,13 +10,13 @@ type FlashCardProp = {
 };
 
 export default function FlashCard({ front, back }: FlashCardProp) {
-  const [flipped, setFlip] = useState(false);
+  const [flipped, setFlip]  = useState(false);
   const cardStyle = {
     width: '100%',
-    height: '50vh',
+    minHeight: '50vh',
   };
-  const renderCard = (key: string, content: string, onClick: () => void) => (
-    <Card style={cardStyle} elevation={24} key={key} onClick={onClick}>
+  const renderCard = (key: string, content: string) => (
+    <Card style={cardStyle} elevation={24} key={key} onClick={() => { setFlip(!flipped) }}>
       <CardContent>
         {content}
       </CardContent>
@@ -26,8 +26,8 @@ export default function FlashCard({ front, back }: FlashCardProp) {
   return (
     <Box>
       <Flip isFlipped={flipped} flipDirection="horizontal">
-        {renderCard('front', front, () => { setFlip(true); })}
-        {renderCard('back', back, () => { setFlip(false); })}
+        {renderCard('front', front)}
+        {renderCard('back', back)}
       </Flip>
     </Box>
   );

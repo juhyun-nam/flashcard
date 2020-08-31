@@ -20,19 +20,19 @@ export default function Study() {
   };
   const iconStyle = {
     width: '100%',
-    height: '100%',
+    height: '50vh',
   };
   return (
     <Grid container spacing={2}>
-      <Grid item xs={3}>
+      <Grid item xs={2}>
         <IconButton disabled={!cardContainer.hasPrev()} style={iconStyle} onClick={prev}>
           <PrevIcon />
         </IconButton>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={8}>
         <FlashCard front={content.front} back={content.back} />
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={2}>
         <IconButton disabled={!cardContainer.hasNext()} style={iconStyle} onClick={next}>
           <NextIcon />
         </IconButton>
