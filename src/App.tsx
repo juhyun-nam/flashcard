@@ -16,8 +16,10 @@ export default function App() {
   );
   return (
     <Container>
-      <Header />
-      <Box my={4}>
+      <Box height="10vh">
+        <Header />
+      </Box>
+      <Box my={2} height= "80vh">
         {screen === 'home' ? renderHome() : renderStudy()}
       </Box>
     </Container>

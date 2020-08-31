@@ -1,5 +1,4 @@
 import React, { Dispatch, useState } from 'react';
-import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
@@ -30,28 +29,24 @@ export default function Home({ setScreen }: HomeProps) {
     setScreen('study');
   };
   return (
-    <Box>
-      <Grid container spacing={2}>
-        <Grid item xs>
-          <Paper elevation={3}>
-            <Box p={1}>
-              <StudyMethodInput method={method} setMethod={setMethod} />
-            </Box>
-          </Paper>
-        </Grid>
-        <Grid item xs>
-          <Paper elevation={3}>
-            <Box p={1}>
-              <StudySourceInput sources={sources} setSources={setSources} />
-            </Box>
-          </Paper>
-        </Grid>
-      </Grid>
+    <>
+      <Box my={1}>
+        <Paper elevation={3}>
+          <Box p={1}>
+            <StudyMethodInput method={method} setMethod={setMethod} />
+          </Box>
+        </Paper>
+      </Box>
+      <Paper elevation={3}>
+        <Box p={1}>
+          <StudySourceInput sources={sources} setSources={setSources} />
+        </Box>
+      </Paper>
       <Box my={2}>
         <Button color="secondary" fullWidth variant="contained" onClick={handleStartButton}>
           Go Study
         </Button>
       </Box>
-    </Box>
+    </>
   );
 }

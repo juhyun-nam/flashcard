@@ -12,9 +12,9 @@ class CardContainer {
   getContent() {
     const current = this.cards[this.index];
     if (this.reverse) {
-      return { front: current.back, back: current.front };
+      return { ...current, front: current.back, back: current.front };
     }
-    return { front: current.front, back: current.back };
+    return current;
   }
 
   constructor() {
@@ -26,7 +26,9 @@ class CardContainer {
   apply(subjects: Array<string>, method: StudyMethod) {
     cards.data.forEach((item) => {
       if (subjects.includes(item.subject)) {
-        this.cards = this.cards.concat(item.contents);
+        item.contents.forEach((elem) => {
+          this.cards.push({ subject: item.subject, front: elem.front, back: elem.back });
+        });
       }
     });
     switch (method) {

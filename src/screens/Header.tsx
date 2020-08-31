@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 
 export default function Header() {
   return (
-    <AppBar position="static">
+    <AppBar position="static" style={{ height: '100%' }}>
       <Toolbar>
         <Typography variant="h4">
           FlashCard

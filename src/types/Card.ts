@@ -1,4 +1,5 @@
 interface Card {
+  subject: string;
   front: string;
   back: string;
 }
