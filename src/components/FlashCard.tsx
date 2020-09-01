@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
-// import Box from '@material-ui/core/Box';
+import React, { Dispatch, useState, useEffect } from 'react';
+import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Flip from 'react-card-flip';
+// import Flip from 'react-card-flip';
 
-type FlashCardProp = {
+type FlipProp = {
+  flipped: boolean,
+  setFlip: Dispatch<boolean>,
   title: string,
   front: string,
-  back: string
+  back: string,
 };
 
-export default function FlashCard({ title, front, back }: FlashCardProp) {
-  const [flipped, setFlip]  = useState(false);
+function Flip({ flipped, setFlip, title, front, back }: FlipProp) {
   const cardStyle = {
     width: '100%',
     minHeight: '100%',
@@ -30,9 +31,27 @@ export default function FlashCard({ title, front, back }: FlashCardProp) {
   );
 
   return (
-    <Flip containerStyle={{ height: '100%' }} isFlipped={flipped} flipDirection="horizontal">
-      {renderCard('front', front)}
-      {renderCard('back', back)}
-    </Flip>
+    <>
+      {!flipped ? renderCard('front', front) : renderCard('back', back)}
+    </>
+  );
+}
+
+type FlashCardProp = {
+  title: string,
+  front: string,
+  back: string,
+};
+
+export default function FlashCard({ title, front, back }: FlashCardProp) {
+  const [flipped, setFlip] = useState(false);
+  useEffect(() => {
+    setFlip(false);
+  }, [front]);
+
+  return (
+    <Box height="100%">
+      <Flip flipped={flipped} setFlip={setFlip} title={title} front={front} back={back} />
+    </Box>
   );
 }
