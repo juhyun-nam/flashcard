@@ -7,19 +7,28 @@ import NextIcon from '@material-ui/icons/ArrowForwardIos';
 
 import cardContainer from '../CardContainer';
 import FlashCard from '../components/FlashCard';
-// import '../components/FlashCard.css';
+import '../components/FlashCard.css';
 
 export default function Study() {
   const [content, setContent] = useState(cardContainer.getContent());
-  // const [animate, setAnimate] = useState('');
+  const [animate, setAnimate] = useState('');
 
   const prev = () => {
     cardContainer.prev();
-    setContent(cardContainer.getContent());
+    setAnimate('fadeOutRight');
+    setTimeout(() => {
+      setContent(cardContainer.getContent());
+      setAnimate('fadeInLeft');
+    }, 300);
   };
+
   const next = () => {
     cardContainer.next();
-    setContent(cardContainer.getContent());
+    setAnimate('fadeOutLeft');
+    setTimeout(() => {
+      setContent(cardContainer.getContent());
+      setAnimate('fadeInRight');
+    }, 300);
   };
   const iconStyle = {
     width: '100%',
@@ -33,7 +42,7 @@ export default function Study() {
         </IconButton>
       </Grid>
       <Grid item xs={8}>
-        <Box height="100%">
+        <Box height="100%" className={`animated ${animate}`}>
           <FlashCard title={content.subject} front={content.front} back={content.back} />
         </Box>
       </Grid>
