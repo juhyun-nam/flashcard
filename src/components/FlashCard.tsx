@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -44,11 +44,9 @@ export default function FlashCard({ title, front, back }: FlashCardProp) {
     setTimeout(() => {
       setAnimate('flipInY');
       setFlip(!flipped);
-    }, 500);
+    }, 300);
   };
-  useEffect(() => {
-    setFlip(false);
-  }, [front]);
+
   const frontCard = { title, subtitle: 'front', content: front };
   const backCard = { title, subtitle: 'back', content: back };
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import Box from '@material-ui/core/Box';
+import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import PrevIcon from '@material-ui/icons/ArrowBackIos';
@@ -7,9 +7,12 @@ import NextIcon from '@material-ui/icons/ArrowForwardIos';
 
 import cardContainer from '../CardContainer';
 import FlashCard from '../components/FlashCard';
+// import '../components/FlashCard.css';
 
 export default function Study() {
   const [content, setContent] = useState(cardContainer.getContent());
+  // const [animate, setAnimate] = useState('');
+
   const prev = () => {
     cardContainer.prev();
     setContent(cardContainer.getContent());
@@ -30,7 +33,9 @@ export default function Study() {
         </IconButton>
       </Grid>
       <Grid item xs={8}>
-        <FlashCard title={content.subject} front={content.front} back={content.back} />
+        <Box height="100%">
+          <FlashCard title={content.subject} front={content.front} back={content.back} />
+        </Box>
       </Grid>
       <Grid item xs={2}>
         <IconButton disabled={!cardContainer.hasNext()} style={iconStyle} onClick={next}>
