@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -38,6 +38,9 @@ type FlashCardProp = {
 
 export default function FlashCard({ title, front, back }: FlashCardProp) {
   const [flipped, setFlip] = useState(false);
+  useEffect(() => {
+    setFlip(false);
+  }, [front]);
   const [animate, setAnimate] = useState('');
   const onClick = () => {
     setAnimate('flipOutY');
