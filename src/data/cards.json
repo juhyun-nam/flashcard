@@ -311,6 +311,91 @@
           "back": "4294967295"
         }
       ]
+    },
+    {
+      "subject": "linux shortcuts",
+      "contents": [
+        {
+          "front": "C-a / C-e",
+          "back": "beginning/end-of-line"
+        },
+        {
+          "front": "C-f / C-b",
+          "back": "forward/backward-char"
+        },
+        {
+          "front": "M-f / M-b",
+          "back": "forward/backword-word"
+        },
+        {
+          "front": "C-l",
+          "back": "clear-screen"
+        },
+        {
+          "front": "C-p / C-n",
+          "back": "previous/next-history"
+        },
+        {
+          "front": "C-r",
+          "back": "reverse-search-history"
+        },
+        {
+          "front": "C-d",
+          "back": "delete-char"
+        },
+        {
+          "front": "C-h",
+          "back": "backward-delete-char"
+        },
+        {
+          "front": "C-k",
+          "back": "kill-line"
+        },
+        {
+          "front": "C-u",
+          "back": "unix-line-discard"
+        },
+        {
+          "front": "C-w",
+          "back": "unix-word-rubout"
+        },
+        {
+          "front": "C-y",
+          "back": "yank"
+        },
+        {
+          "front": "M-y",
+          "back": "yank-pop"
+        },
+        {
+          "front": "C-_",
+          "back": "undo"
+        },
+        {
+          "front": "C-g",
+          "back": "abort"
+        }
+      ]
+    }, {
+      "subject": "Regular Expression",
+      "contents": [
+        {
+          "front": "metacharacter BRE vs ERE",
+          "back": "\\{, \\?, \\+, \\|, \\(\\)"
+        },
+        {
+          "front": "command BRE vs ERE",
+          "back": "BRE(grep, sed, vi(almost)), ERE(less, awk)"
+        },
+        {
+          "front": "*, \\?, \\+",
+          "back": "* = {0,}, \\? = {0, 1}, \\+ = {1,}"
+        },
+        {
+          "front": "metacharacter BRE vs GLOB",
+          "back": ".* = *, . = ?"
+        }
+      ]
     }
   ]
 }
