@@ -1,7 +1,15 @@
-interface Card {
-  subject: string;
-  front: string;
-  back: string;
+export interface Card {
+  front: string | Array<string>;
+  back: string | Array<string>;
 }
 
-export default Card;
+export interface CardView {
+  subject: string;
+  front: string | Array<string>;
+  back: string | Array<string>;
+}
+
+export interface Cards {
+  subject: string;
+  contents: Array<Card>;
+}

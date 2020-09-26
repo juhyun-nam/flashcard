@@ -1,9 +1,16 @@
-import Card from './types/Card';
+import { Card, CardView } from './types/Card';
 import StudyMethod from './types/StudyMethod';
 import cards from './data/cards.json';
 
+function Shuffle(array: Array<any>) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
 class CardContainer {
-  private cards: Array<Card>;
+  private cards: Array<CardView>;
 
   private index: number;
 
@@ -26,17 +33,17 @@ class CardContainer {
   apply(subjects: Array<string>, method: StudyMethod) {
     cards.data.forEach((item) => {
       if (subjects.includes(item.subject)) {
-        item.contents.forEach((elem) => {
+        item.contents.forEach((elem: Card) => {
           this.cards.push({ subject: item.subject, front: elem.front, back: elem.back });
         });
       }
     });
     switch (method) {
       case StudyMethod.SHUFFLE:
-        this.cards.sort(() => Math.random() - 0.5);
+        Shuffle(this.cards);
         break;
       case StudyMethod.SHUFFLE_REVERSE:
-        this.cards.sort(() => Math.random() - 0.5);
+        Shuffle(this.cards);
         this.reverse = true;
         break;
       default:

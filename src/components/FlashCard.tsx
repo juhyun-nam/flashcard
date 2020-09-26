@@ -9,8 +9,8 @@ import './FlashCard.css';
 
 type FlipCardProp = {
   title: string,
-  subtitle: string,
-  content: string,
+  subtitle: string | Array<string>,
+  content: string | Array<string>,
 };
 
 function FlipCard({ title, subtitle, content }: FlipCardProp) {
@@ -18,13 +18,27 @@ function FlipCard({ title, subtitle, content }: FlipCardProp) {
     width: '100%',
     minHeight: '100%',
   };
+  const renderContent = (content: string | Array<string>) => {
+    if (typeof content == "string") {
+      return (
+        <Typography variant="body2" color="textSecondary" component="p">
+          {content}
+        </Typography>
+      );
+    } else {
+      return content.map((value, index) => (
+        <Typography key={`card${index}`} variant="body2" color="textSecondary" component="p">
+          {value}
+        </Typography>
+      )
+      );
+    }
+  }
   return (
     <Card style={cardStyle} elevation={24}>
       <CardHeader title={title} subheader={subtitle} />
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {content}
-        </Typography>
+        {renderContent(content)}
       </CardContent>
     </Card>
   );
@@ -32,8 +46,8 @@ function FlipCard({ title, subtitle, content }: FlipCardProp) {
 
 type FlashCardProp = {
   title: string,
-  front: string,
-  back: string,
+  front: string | Array<string>,
+  back: string | Array<string>,
 };
 
 export default function FlashCard({ title, front, back }: FlashCardProp) {
