@@ -212,64 +212,40 @@
       "subject": "linux features",
       "contents": [
         {
-          "front": "C-a / C-e",
-          "back": "beginning/end-of-line"
+          "front": "moving",
+          "back": [
+            "C-a / C-e : beginning/end-of-line",
+            "C-f / C-b : forward/backward-char",
+            "M-f / M-b : forward/backword-word"
+          ]
         },
         {
-          "front": "C-f / C-b",
-          "back": "forward/backward-char"
+          "front": "history",
+          "back": [
+            "C-p / C-n : previous/next-history",
+            "C-r : reverse-search-history"
+          ]
         },
         {
-          "front": "M-f / M-b",
-          "back": "forward/backword-word"
+          "front": "changing, killing and yanking",
+          "back": [
+            "C-d / M-d : delete-char / kill-word",
+            "C-h / C-w : backward-delete-char / unix-word-rubout",
+            "C-u / C-k : unix-line-discard / kill-line",
+            "C-y / M-y : yank / yank-pop"
+          ]
         },
         {
-          "front": "C-l",
-          "back": "clear-screen"
+          "front": "clear-screen",
+          "back": "C-l"
         },
         {
-          "front": "C-p / C-n",
-          "back": "previous/next-history"
+          "front": "undo",
+          "back": "C-Shift-(-)"
         },
         {
-          "front": "C-r",
-          "back": "reverse-search-history"
-        },
-        {
-          "front": "C-d",
-          "back": "delete-char"
-        },
-        {
-          "front": "C-h",
-          "back": "backward-delete-char"
-        },
-        {
-          "front": "C-k",
-          "back": "kill-line"
-        },
-        {
-          "front": "C-u",
-          "back": "unix-line-discard"
-        },
-        {
-          "front": "C-w",
-          "back": "unix-word-rubout"
-        },
-        {
-          "front": "C-y",
-          "back": "yank"
-        },
-        {
-          "front": "M-y",
-          "back": "yank-pop"
-        },
-        {
-          "front": "C-_",
-          "back": "undo"
-        },
-        {
-          "front": "C-g",
-          "back": "abort"
+          "front": "abort",
+          "back": "C-g"
         },
         {
           "front": [
