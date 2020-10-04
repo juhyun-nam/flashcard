@@ -25,6 +25,7 @@ class CardContainer {
   }
 
   constructor() {
+    fetch('https://juhun-nam.github.io/api/flashcard/cards.json').then(res => JSON.stringify(res.json())).then(data => console.log(data));
     this.cards = [];
     this.index = 0;
     this.reverse = false;
